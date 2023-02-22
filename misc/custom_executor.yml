@@ -1,0 +1,21 @@
+apiVersion: executor.testkube.io/v1
+kind: Executor
+metadata:
+  name: ginkgo-terraform-executor
+  namespace: testkube
+spec:
+  content_types:
+  - string
+  - file-uri
+  - git-file
+  - git-dir
+  executor_type: job
+  features:
+  - artifacts
+  - junit-report
+  image: 511263661634.dkr.ecr.us-west-2.amazonaws.com/testkube-executor-ginkgo-terraform1.2.9:v0.0.1
+  meta:
+    docsURI: https://kubeshop.github.io/testkube/test-types/executor-ginkgo
+    iconURI: ginkgo
+  types:
+  - ginkgo-terraform/test

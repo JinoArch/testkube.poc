@@ -1,9 +1,11 @@
 package k8s_test
 
 import (
+	"testing"
+
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
-	"github.com/JinoArch/testkube.poc/internal/k8s"
+	"github.com/rewards-devops/rewatest/internal/k8s"
 )
 
 var podFunc map[string]string
@@ -13,7 +15,7 @@ var _ = BeforeSuite(func() {
 	podFunc = k8s.TestAllPodsRunning()
 })
 
-// Container
+// Container Node
 var _ = Describe("TEST: Pods not is Running state", func() {
 
 	// Specs are defined in contexts sections
@@ -41,3 +43,10 @@ var _ = Describe("TEST: Pods not is Running state", func() {
 		})
 	})
 })
+
+func TestGinkgo(t *testing.T) {
+	//  registers a handler, handles Fail function from the ginkgo package with Gomega.
+	RegisterFailHandler(Fail)
+	// hands over the control to Ginkgo
+	RunSpecs(t, "K8s Test Suite")
+}
